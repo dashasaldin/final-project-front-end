@@ -1,21 +1,17 @@
 import React from "react";
-import logo from "./components/images/logo.png"
+import { Nav} from "./Nav";
 
 
-
-const Header = () => {
+export const Header = () => {
     return (
-        <header>
-            <meta name="description" content="Little Lemon is a family-owned restaurant in Chicago, IL"/>
-            <meta name="og:title" content="Little Lemon webpage"/>
-            <meta name="og:description" content="Webpage of Little Lemon restaurant"/>
-            <meta name="og:image" content="components/images/restaurant.jpg"/>
-            <img src={logo} alt="Little Lemon logo"></img>
+            <header>
+            <img src="images/Logo.png" alt="Little Lemon logo"></img>
+            <Nav />
         </header>
+
     )
 }
 
 
 
 
-export default Header;
