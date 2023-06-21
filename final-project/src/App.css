@@ -160,3 +160,23 @@ footer img {
   font-weight: bold;
   padding: 0 1em;
 }
+
+form {
+  display: grid;
+  max-width: 200px;
+  gap: 20px;
+  padding-top: 1em;
+}
+
+label {
+  color: #EDEFEE;
+}
+
+.booking {
+  background-color: #495E57;
+  height: 100vh;
+}
+
+.booking h2, h3 {
+  color: #EDEFEE;
+}

@@ -8,7 +8,7 @@ export const Main = () => {
     <Routes> 
     <Route path="/" element={<Homepage />}></Route>
     <Route path="/booking" element={<BookingPage />}></Route>
-</Routes>
+    </Routes>
     )
 }
 
