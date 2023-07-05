@@ -180,3 +180,7 @@ label {
 .booking h2, h3 {
   color: #EDEFEE;
 }
+
+.booking-form button {
+  margin-top: 1em;
+}

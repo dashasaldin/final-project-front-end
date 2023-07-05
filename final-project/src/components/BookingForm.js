@@ -2,13 +2,22 @@ import React from "react";
 import { useState } from "react";
 import { AvailableTimes } from "./AvailableTimes.js";
 
-export const BookingForm = () => {
+export const BookingForm = (props) => {
    const [date, setDate] = useState ("");
    const [numberOfGuests, setnumberOfGuests] = useState("1");
+   const [occasion, setOccasion] = useState("Birthday");
+
+   const handleSubmit = (e) => {
+      e.preventDefault();
+      setDate("");
+      setnumberOfGuests("1");
+      props.setAvailableTime("17:00");
+      setOccasion("Birthday");
+   }
 
    return (
     <div className="booking-form">
-    <form>
+    <form onSubmit={handleSubmit}>
    <label htmlFor="res-date">Choose date</label>
    <input
    id="res-date"
@@ -17,7 +26,7 @@ export const BookingForm = () => {
    onChange={(e) => setDate(e.target.value)}
    />
    <label htmlFor="res-time">Choose time</label>
-   <AvailableTimes />
+   <AvailableTimes {...props} />
 
    <label htmlFor="guests">Number of guests</label>
    <input
@@ -30,7 +39,11 @@ export const BookingForm = () => {
    onChange={(e) => setnumberOfGuests(e.target.value)}
    />
    <label htmlFor="occasion">Occasion</label>
-   <select id="occasion">
+   <select
+   id="occasion"
+   value= {occasion}
+   onChange={(e) => setOccasion(e.target.value)}
+   >
       <option>Birthday</option>
       <option>Anniversary</option>
    </select>

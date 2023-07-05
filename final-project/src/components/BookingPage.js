@@ -2,7 +2,7 @@ import React from "react";
 import { Header } from "./Header";
 import { BookingForm } from "./BookingForm";
 
-export const BookingPage  = () => {
+export const BookingPage  = (props) => {
     return (
         <>
         <Header />
@@ -10,7 +10,7 @@ export const BookingPage  = () => {
             <h1>Little Lemon</h1>
             <h2 >Chicago</h2>
             <h3 >Find a table for every occasion</h3>
-            <BookingForm />
+            <BookingForm {...props} />
         </section>
         </>
     )
