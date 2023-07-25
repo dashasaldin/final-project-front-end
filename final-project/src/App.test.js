@@ -1,6 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import { BookingForm } from "./components/BookingForm";
-import { initializeTimes, updateTimes } from "./Times";
+import { initializeTimes, updateAvailableTimes } from "./Times";
+
+jest.mock("./components/API", () => ({ fetchAPI: () => ["10:00", "10:30"] }));
 
 test("renders the BookingForm label", () => {
   render(<BookingForm availableTimes={[]} />);
@@ -8,15 +10,15 @@ test("renders the BookingForm label", () => {
   expect(labelElement).toBeInTheDocument();
 });
 
-test("initializeTimes function should return correct state", () => {
+test("initializeTimes function returns non-empty array of available booking times", () => {
   const result = initializeTimes();
   expect(result).toEqual({
-    times: ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"],
-    selectedTime: "17:00",
+    times: ["10:00", "10:30"],
+    selectedTime: "",
   });
 });
 
-test("updateTimes functions should return the same value provided in the state", () => {
-  const output = updateTimes({}, "17:00");
-  expect(output).toEqual({ selectedTime: "17:00" });
+test("updateAvailableTimes functions updates the available times based on the selected date", () => {
+  const output = updateAvailableTimes({}, new Date());
+  expect(output).toEqual({ times: ["10:00", "10:30"] });
 });
