@@ -194,3 +194,7 @@ h3 {
 .confirmation-page h1 {
   color: #f4ce14;
 }
+
+input.error-input {
+  border: 1px red solid;
+}
