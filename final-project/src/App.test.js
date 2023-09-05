@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { BookingForm } from "./components/BookingForm";
 import { initializeTimes, updateAvailableTimes } from "./Times";
 
@@ -8,6 +8,22 @@ test("renders the BookingForm label", () => {
   render(<BookingForm availableTimes={[]} />);
   const labelElement = screen.getByLabelText(/Choose date/);
   expect(labelElement).toBeInTheDocument();
+});
+
+test("validates invalid name", () => {
+  render(<BookingForm availableTimes={[]} />);
+  const inputName = screen.getByLabelText(/Name/);
+  fireEvent.change(inputName, { target: { value: "1111" } });
+  expect(screen.getByText("Please enter a valid name.")).toBeInTheDocument();
+});
+
+test("validates valid name", () => {
+  render(<BookingForm availableTimes={[]} />);
+  const inputName = screen.getByLabelText(/Name/);
+  fireEvent.change(inputName, { target: { value: "Rob" } });
+  expect(
+    screen.queryByText("Please enter a valid name.")
+  ).not.toBeInTheDocument();
 });
 
 test("initializeTimes function returns non-empty array of available booking times", () => {
