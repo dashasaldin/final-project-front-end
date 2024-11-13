@@ -29,15 +29,15 @@ export const Main = () => {
   function submitForm(formData) {
     const submittedForm = submitAPI(formData);
     if (submittedForm) {
-      return navigate("/confirmed-booking");
+      return navigate("/final-project-front-end/confirmed-booking");
     }
   }
 
   return (
     <Routes>
-      <Route path="/" element={<Homepage />}></Route>
+      <Route path="/final-project-front-end" element={<Homepage />}></Route>
       <Route
-        path="/booking"
+        path="/final-project-front-end/booking"
         element={
           <BookingPage
             selectedTime={state.selectedTime}
@@ -52,7 +52,10 @@ export const Main = () => {
           />
         }
       ></Route>
-      <Route path="/confirmed-booking" element={<ConfirmationPage />}></Route>
+      <Route
+        path="/final-project-front-end/confirmed-booking"
+        element={<ConfirmationPage />}
+      ></Route>
     </Routes>
   );
 };
